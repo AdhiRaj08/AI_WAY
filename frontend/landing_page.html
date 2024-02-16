@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Way</title>
+    <link rel = "icon" type = "image/svg+xml" href = "/favicon.svg"/>
+    <link rel = "stylesheet" href = "./sty.css">
+    <link rel="stylesheet" href="./clir.css">
+</head>
+<body>
+    <div class = "navbar">
+        <img src="./Photos App Icon.jpg" alt="AIway" id = "image">
+        <span id = "title">AI Way</span>
+        <nav>
+            <ul>
+                <li><a href="./bo.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./acc.html">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="card">
+        <div class="upload-form">
+            <form action="submit" method="POST" id="myForm">
+                <label for="pdf-upload" class="upload-button" id="button">Upload PDF</label><br>
+                <input type="file" name="pdf" id="pdf-upload" accept=".pdf" required><br>
+                <input type="text" name="search" id="search" placeholder="Type Question Here" autocomplete="chrome-off" required><br>
+                <div class="suggestion-box" id="wrap">
+                    <div class="results">
+                        <ul>
+                        </ul>
+                    </div>
+                </div>
+                <button type="submit" id="openpop" class="submit-button">Submit</button>
+    
+                <div class="pop" id="pop">
+                    <ul>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div class="pop" id="pop">
+        <div class="overlay"></div>
+        <div class="cont">
+            <h2>Topics Covered</h2>
+            <button class = "submit-btn">Heisnburg principles</button>
+            <h2>Answer:</h2>
+            <div class = "ans">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates in commodi iure autem ut iste minus nisi temporibus quibusdam sapiente, minima repudiandae maxime expedita voluptatem aut non laboriosam vero dolore.</div>
+            <div class = "controls">
+                <button class = "close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer-content">
+        <p>&copy; 2024 AI Way. All rights reserved.</p>
+    </div>
+    <script src = "./ja.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('myForm');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                // Fetch form data
+                const formData = new FormData(form);
+
+                // Log form data
+                console.log('PDF File:', formData.get('pdf'));
+                console.log('Question:', formData.get('question'));
+            });
+        });
+    </script>
+</body>
+</html>
