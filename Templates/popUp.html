@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Way</title>
+    <link rel = "icon" type = "image/svg+xml" href = "/favicon.svg"/>
+    <link rel = "stylesheet" href = "static/sty.css">
+    <link rel="stylesheet" href="static/clir.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class = "navbar">
+        <img src="static/Photos App Icon.jpg" alt="AIway" id = "image">
+        <span id = "title">AI Way</span>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('tell') }}">About</a></li>
+                <li><a href="{{ url_for('acc') }}">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="card">
+        <div class="upload-form">
+            <form action="/submit" method="POST" id="myForm">
+                <label for="pdf-upload" class="upload-button" id="button">Upload PDF</label><br>
+                <input type="file" name="pdf" id="pdf-upload" accept=".pdf" ><br>
+                <input type="text" name="search" id="search" placeholder="Type Question Here"><br>
+                <div id="suggestions" onClick="appendToSearchBox()"></div>
+                <button type="submit" id="openpop" class="submit-button">Submit</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="pop" id="pop">
+        <div class="overlay"></div>
+        <div class="cont">
+            <h2>Topics Covered</h2>
+            <button class = "submit-btn">International</button> 
+            <button class = "submit-btn">Security</button>
+            <button class = "submit-btn">Global</button>
+            <button class = "submit-btn">Nation</button>
+            <h2>Answer:</h2>
+            <div class = "ans"><p> </p></div>
+            <div class = "controls">
+                <button class = "close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer-content">
+        <p>&copy; 2024 AI Way. All rights reserved.</p>
+    </div>
+    <script src = "static/ja.js"></script>
+</body>
+</html>
