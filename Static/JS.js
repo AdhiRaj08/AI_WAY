@@ -1,4 +1,3 @@
-
 // Function to create a popup with open and close functionality
 function create(id){
     let pop = document.querySelector(id);
@@ -64,19 +63,36 @@ document.getElementById('pdf-upload').addEventListener('change', function() {
                     submitBtns[i].appendChild(p);
                 });
             }
-        },
-        error: function(xhr, status, error) {                                                                
-            console.error('Error uploading PDF file:', error);             // Handle error response from the server
         }
     });
 });
-
-
+function validateFileInput() {
+    var fileInput = document.getElementById('pdf-upload');
+    if (!fileInput.files.length) {
+        alert('Please select a PDF file.');
+        return false;
+    }
+    else{
+        console.log("FILE FOUND!!");
+    }
+    return true;
+}
+function validateFile() {
+    var fileInput = document.getElementById('pdf-upload');
+    if (!fileInput.files.length) {
+        alert('Please select a PDF file.');
+        return false;
+    }
+    return true;
+}
+var selectedWord = '';
 $(document).ready(function() {
+    //console.log('Loading suggestions...');
     var suggestionsLoaded = true;
     var ajaxRequest;
 
     function loadSuggestions() {
+        selectedWord = ' ';
         var value = document.getElementById('search').value;                // Retrieve the input value
         ajaxRequest = $.ajax({
             url: '/get_suggestions',
@@ -85,20 +101,25 @@ $(document).ready(function() {
             data: JSON.stringify({ 'value': value }),                       // Send the input value in the AJAX request
             success: function(response) {
                 var suggestions = response.result;
-                var suggestion = document.getElementsById('suggestions');
-                suggestion.innerHTML = '';                                  // Clear existing content
+                var suggestion = document.getElementById('suggestions');
+                suggestions.innerHTML = '';                                  // Clear existing content
 
                 for (var i = 0; i < suggestions.length; i++) {
-                    suggestions[i].forEach(function(str) {                  // Iterate over suggestions[i] instead of suggestions
-                        var p = document.createElement('div');
-                        p.textContent = str;
-                        suggestion.appendChild(p);
-                    });
+                    var p = document.createElement('span');  // Use <span> instead of <div>
+                    p.textContent = suggestions[i];  // Set the entire word as the text content
+                    p.className = 'suggestions';  // Add a class for styling
+                    suggestion.appendChild(p);
+                    selectedWord += p.textContent;
                 }
-            },
-            error: function(xhr, status, error) {                                                                
-                console.error('Error');             // Handle error response from the server
-            }
+                    console.log(selectedWord);
+                document.body.addEventListener('click', function(event) {
+                    if (!event.target.closest('.suggestions')) {
+                        // Clicked outside of suggestion box
+                        suggestion.innerHTML = '';  // Clear the suggestion box
+                    }
+                });
+                    
+                }
         });
     }
 
@@ -118,3 +139,23 @@ $(document).ready(function() {
     });
 });
 
+function appendToSearchBox() {
+    document.getElementById('search').value += selectedWord.trim();
+    selectedWord = '';
+    var suggestion = document.getElementById('suggestions');
+    
+    document.body.addEventListener('click', function(event) {
+        if (!event.target.closest('.suggestions')) {
+            // Clicked outside of suggestion box
+            
+            suggestion.innerHTML = '';  // Clear the suggestion box
+            if (suggestion.style.display === "none") {
+                suggestion.style.display = "block";
+            } else {
+                suggestion.style.display = "none";
+            }
+        }
+    });
+    
+       
+}
