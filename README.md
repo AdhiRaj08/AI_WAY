@@ -28,8 +28,5 @@ Next-word prediction employing LSTM networks trained on uploaded PDF documents.
 ## Contributing
 * Contributions are welcome! Please open an issue to discuss potential changes or submit a pull request with your enhancements.
 
-![AI_Way](./Static/ai_way_1.png) 
-![AI_Way](./Static/ai_way_2.png) 
-
 ## Acknowledgements
 Thank you to the developers of HuggingFace Transformers, Goslate API, and other libraries and APIs used in this project.
