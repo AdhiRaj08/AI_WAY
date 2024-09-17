@@ -12,7 +12,6 @@ Next-word prediction employing LSTM networks trained on uploaded PDF documents.
 ### Features
 - Question and Answer System: Accurately answers user queries based on uploaded documents.
 - Topic Modeling: Identifies key topics within documents to provide insights.
-- Multimodal OCR: Extracts handwritten content from PDF documents for analysis.
 - Cross-Language Translation: Translates content between languages seamlessly.
 - Next-Word Prediction: Predicts the next word in a sequence for smoother interaction with document content.
 
