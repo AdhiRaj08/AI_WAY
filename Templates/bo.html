@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,7 @@
     <link rel = "icon" type = "image/svg+xml" href = "/favicon.svg"/>
     <link rel = "stylesheet" href = "static/sty.css">
     <link rel="stylesheet" href="static/clir.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class = "navbar">
@@ -22,23 +23,27 @@
     </div>
     <div class="card">
         <div class="upload-form">
-            <form action="/submit" method="POST" id="myForm">
+            <form action="http://127.0.0.1:5000/upload" method="POST" id="myForm" enctype="multipart/form-data">
                 <label for="pdf-upload" class="upload-button" id="button">Upload PDF</label><br>
-                <input type="file" name="pdf" id="pdf-upload" accept=".pdf" required><br>
-                <input type="text" name="search" id="search" placeholder="Type Question Here" autocomplete="chrome-off" required><br>
-                <div id="suggestions"></div>
+                <input type="file" name="pdf" id="pdf-upload" accept=".pdf"><br>
+                <input type="text" name="search" id="search" placeholder="Type Question Here"><br>
+                <div id="suggestions" onClick="appendToSearchBox()"></div>
                 <button type="submit" id="openpop" class="submit-button">Submit</button>
             </form>
         </div>
     </div>
-    
     <div class="pop" id="pop">
         <div class="overlay"></div>
         <div class="cont">
             <h2>Topics Covered</h2>
-            <button class = "submit-btn">{{ topics_content }}</button>
+            <div id = "topics">
+                <button class = "submit-btn" id = 'o1'>International</button> 
+                <button class = "submit-btn" id = 'o2'>Security</button>
+                <button class = "submit-btn" id = 'o3'>Global</button>
+                <button class = "submit-btn" id = 'o4'>Nation</button>
+            </div>
             <h2>Answer:</h2>
-            <div class = "ans">{{ answer_content }}</div>
+            <div class="ans">{{ answer_content }}</div> 
             <div class = "controls">
                 <button class = "close-btn">Close</button>
             </div>
