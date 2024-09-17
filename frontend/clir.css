@@ -23,9 +23,8 @@
     background: rgba(0, 0, 0, 0.5);
     width: 100%;
     height: 100%;
-    transition: opacity 300ms ease-in-out; /* Updated timing */
+    transition: opacity 300ms ease-in-out; 
 }
-
 .pop .cont {
     position: absolute;
     top: 50%;
@@ -51,17 +50,18 @@
     opacity: 1;
 }
 
-.pop.active .cont {
+.pop.active .cont{
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
 }
-
 .pop .cont h2 {
     margin: 10px 0px;
     font-size: 20px;
     color: #111;
     text-align: center;
 }
+/* Style for the overlay */
+
 
 .pop .cont p {
     margin: 15px 0px;
@@ -120,67 +120,22 @@
     overflow: auto;
 }
 
-.pop .overlay .wrap{
-    margin: 0 auto;
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.5);
-    position: relative;
-    width: 450px;
-}
-
-.pop .overlay.results ul{
-    margin: 0;
-    padding: 0;
-}
-.pop .overlay.results.active {
-    top: 0px;
-    transition: top 0ms ease-in-out 0ms;
-}
-.pop .overlay.results ul li{
-    list-style: none;
-    border-radius: 3px;
-    opacity: 0;
-    display: none;
-    padding: inherit;
-    transition: all .5s linear;
-    transition: opacity 300ms ease-in-out;
-}
-.pop .overlay.show .results ul li{
-    opacity: 1;
+#suggestions{
+    position: absolute;
+    width: 64%;
+    padding: 2px;
+    border: 1px solid #ccc;
+    border-radius: 9px;
+    box-sizing: border-box;
+    color: #637c54;
+    background-color: #fff;
+    border-top: none;  
+    border-radius: 0 0 5px 5px;
+    cursor: pointer;
     display: block;
 }
-.pop .overlay.show .results{
-    padding: 10px;
-}
-.pop .overlay.results ul li:hover{
-    background: #ececee;
-}
-.pop .overlay .wrap {
-    position: absolute;
-    top: calc(100% + 10px); 
-    left: 50%;
-    transform: translateX(-50%);
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.5);
-    width: 300px; 
-    z-index: 999; 
-    display: none; 
+
+.suggestion:hover {
+    background-color: #052b2f;
 }
 
-.pop .overlay .results ul {
-    margin: 0;
-    padding: 0;
-}
-
-.pop .overlay .results ul li {
-    list-style: none;
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.pop .overlay .results ul li:hover {
-    background: #f0f0f0;
-}
